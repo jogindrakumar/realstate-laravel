@@ -46,6 +46,21 @@ Route::get('/account/show-status', function () {
     return view('pages/show-status');
 })->name('show-status');
 
+
+
+
+
+// admin route
+
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.'
+],function(){
+    Route::get('/', function () {
+    return view('admin/dashboard');
+})->name('dashboard');
+});
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });

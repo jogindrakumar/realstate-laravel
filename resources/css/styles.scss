@@ -10,3 +10,8 @@
 @use './pages/show-status';
 @use './pages/auth';
 @use './pages/single-listing';
+.error-sub-text {
+    color: red;
+    font-size: .8rem;
+    padding: 10px 0;
+}

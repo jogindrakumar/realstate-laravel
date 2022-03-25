@@ -69,7 +69,7 @@
     <h3 class="auth-page__title">Register</h3>
     <div class="auth-page__form-group">
     <label for="name" class="auth-page__form-label">Name</label>
-    <input type="text" name="name" class="auth-page__form-input" required>
+    <input type="text" name="name" class="auth-page__form-input" value="{{old('name')}}" required>
       @error('name')
     <div class="error-sub-text">
         {{$message}}
@@ -78,7 +78,7 @@
     </div>
     <div class="auth-page__form-group">
     <label for="email" class="auth-page__form-label">E-mail</label>
-    <input type="email" name="email" class="auth-page__form-input" required>
+    <input type="email" name="email" class="auth-page__form-input" value="{{old('email')}}" required>
       @error('email')
     <div class="error-sub-text">
         {{$message}}

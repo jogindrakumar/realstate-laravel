@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Listing;
+use App\Http\Controllers\Admin\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +14,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// admin route
+
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.'
+],function(){
+    Route::get('/', function () {
+    return view('admin/dashboard');
+})->name('dashboard');
+
+Route::group([
+    'prefix' => 'listings',
+    'as' => 'listings.'
+],function(){
+    Route::get('/',[ListingController::class,'index'])->name('index'); 
+    Route::get('/create',[ListingController::class,'create'])->name('create'); 
+    Route::get('/{id}/edit',[ListingController::class,'edit'])->name('edit'); 
+});
+
+});
 
 // HOme page
 Route::get('/', function () {
@@ -50,16 +73,8 @@ Route::get('/account/show-status', function () {
 
 
 
-// admin route
 
-Route::group([
-    'prefix' => 'admin',
-    'as' => 'admin.'
-],function(){
-    Route::get('/', function () {
-    return view('admin/dashboard');
-})->name('dashboard');
-});
+
 
 // Route::get('/', function () {
 //     return view('welcome');

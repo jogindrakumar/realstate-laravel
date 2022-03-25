@@ -60,7 +60,7 @@
         }
     </style>
       <link rel="stylesheet" href="{{mix('css/styles.css')}}">
-    <script defer="defer" src="dash/main.js"></script>
+    <script defer="defer" src="/dash/main.js"></script>
 </head>
 
 <body class="app">
@@ -129,9 +129,9 @@
                                     ><i class="ti-angle-right"></i></span
                             ></a>
                         <ul class="dropdown-menu">
-                            <li><a class="sidebar-link" href="basic-table.html">Create New Listing</a>  </li>     
+                            <li><a class="sidebar-link" href="{{route('admin.listings.create')}}">Create New Listing</a>  </li>     
                                
-                                <li><a class="sidebar-link" href="datatable.html">Show All Listing</a></li>
+                                <li><a class="sidebar-link" href="{{route('admin.listings.index')}}">Show All Listing</a></li>
                                 <li><a class="sidebar-link" href="datatable.html">Listing Tour Requests</a></li>
                                     
                                 

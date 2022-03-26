@@ -83,10 +83,15 @@ class ListingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug,$id)
     {
         //
-        return view('admin.listings.edit');
+        $listing = Listing::where([
+            'id' => $id,
+            'slug' =>$slug
+        ])->first();
+        
+        return view('admin.listings.edit',['listing'=>$listing]);
     }
 
     /**

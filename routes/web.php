@@ -33,6 +33,7 @@ Route::group([
     Route::get('/create',[ListingController::class,'create'])->name('create'); 
     Route::get('/{slug}/{id}/edit',[ListingController::class,'edit'])->name('edit'); 
     Route::post('/',[ListingController::class,'store'])->name('store'); 
+    Route::put('/{slug}/{id}',[ListingController::class,'update'])->name('update'); 
 });
 
 });

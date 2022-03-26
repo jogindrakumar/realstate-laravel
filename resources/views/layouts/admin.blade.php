@@ -581,6 +581,13 @@
                 </div>
                 <!-- ### $App Screen Content ### -->
                 <main class="main-content bgc-grey-100">
+                    @if (session()->has('success'))
+                         <div class="alert alert-success" role="alert">{{session('success')}}!</div>
+                    @endif
+                     @if (session()->has('error'))
+                         <div class="alert alert-danger" role="alert">{{session('error')}}!</div>
+                    @endif
+                   
                    @yield('content') 
                 </main>
                 <!-- ### $App Screen Footer ### -->

@@ -41,6 +41,16 @@ class ListingController extends Controller
     public function store(Request $request)
     {
         //
+        request()->validate([
+            'address' => 'required',
+            'address2' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zipcode' => 'required|integer',
+            'bedrooms' => 'required|integer',
+            'bathrooms' => 'required|integer',
+            'squarefootage' => 'required|integer',
+        ]);
         $listing = new Listing();
         $listing->address = $request->get('address');
         $listing->address2 = $request->get('address2');
@@ -52,7 +62,8 @@ class ListingController extends Controller
         $listing->squarefootage = $request->get('squarefootage');
         $listing->slug = Helper::slugify("{$request->address}-{$request->address2}-{$request->city}-{$request->state}-{$request->zipcode}");
         $listing->save();
-         return "success";
+        
+         return redirect("/admin/listings/{$listing->slug}/{$listing->id}/edit")->with('success','Listing create successfully');
     }
 
     /**

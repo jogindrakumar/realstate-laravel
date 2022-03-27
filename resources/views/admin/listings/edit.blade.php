@@ -9,6 +9,7 @@
         <div class="mT-30">
             <form method="POST" action="{{ route('admin.listings.update',['slug' =>$listing->slug,'id'=>$listing->id]) }}">
                @csrf
+               @method('PUT')
                 <div class="mb-3">
                     <label class="form-label" for="inputAddress">Address</label>
                     <input type="text" class="form-control" name="address" value="{{old('address',$listing->address)}}" id="inputAddress" placeholder="ex:1234 Main St"/>   
@@ -88,8 +89,13 @@
             </div>
                 
                 <button type="submit" class="btn btn-primary btn-color">
-                    Create Listing
+                   Save 
                 </button>
+                 
+                <a href="{{route('admin.listings.delete',['slug' =>$listing->slug,'id'=>$listing->id])}}" onclick="return confirm('Are you sure ? want to delete ?')"
+                      class="btn btn-danger btn-color">
+                   Delete
+                </a>
             </form>
         </div>
     </div>

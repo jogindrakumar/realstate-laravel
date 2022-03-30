@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\ListingController;
 
 Route::group([
     'prefix' => 'admin',
+    'middleware' => ['auth','is_admin'],
     'as' => 'admin.'
 ],function(){
     Route::get('/', function () {

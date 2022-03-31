@@ -93,12 +93,11 @@
                         @enderror
             </div>
                 
-               <div class="mb-3 col-md-6">
+               <div class="mb-3 col-md-12">
                    <h3>Details</h3>
                    <label class="form-label" for="description">Description</label> 
-                <textarea type="text" class="form-control" cols="200" style="height:100px;"  name="description"  id="description" placeholder="ex:Full details about your property"> 
-                    {{old('description',$listing->description)}}
-                </textarea>
+    <textarea type="text" class="form-control" cols="200" style="height:100px;"  name="description"  id="description" placeholder="ex:Full details about your property">{{old('description',$listing->description)}}</textarea>
+    
                 @error('description')
                         <div class="error-sub-text">
                             {{$message}}

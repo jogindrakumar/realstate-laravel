@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Photo; 
+use App\Models\User; 
+use App\Helper\Helper;
+use Illuminate\Support\Facades\DB;
+use Auth;
 
 class PhotoController extends Controller
 {
@@ -12,9 +17,18 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug,$id)
     {
+        
         //
+         $photos = Photo::where(['user_id' => auth()->user()->id,'listing_id'=>$id])
+         ->paginate(3);
+         if(!$photos->hasPages()){
+             return redirect('/admin/listings/{$slug}/{$id}/photos/create');
+         }
+         dd($photos->hasPages());
+        
+        return view('admin/listings/photos/index',compact('photos'));
     }
 
     /**
@@ -25,6 +39,7 @@ class PhotoController extends Controller
     public function create()
     {
         //
+        return view('admin/listings/photos/create');
     }
 
     /**

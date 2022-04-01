@@ -3,8 +3,27 @@
 
 <div id="mainContent">
     <div class="row">
+        <div class="col-md-10">
+     <h4 class="c-grey-900 mB-20">show all Photos</h4>
+        </div>
+       
+        <div class="col-md-2">
+            <a href="{{route('admin.listings.edit',['slug' =>$slug,'id'=>$id])}}"
+    class="btn cur-p" style="width: 100%;margin-top:1rem;color:black;">
+   
+        Go Back To Edit Page
+    </a>
+            <a href="{{route('admin.listings.photos.create',['slug' =>$slug,'id'=>$id])}}"
+    class="btn cur-p btn-primary" style="width: 100%;margin-top:1rem;color:black;">
+   
+        Add New Photo
+    </a>
+        </div>
+          
+    </div>
+    <div class="row">
 <div class="bgc-white bd bdrs-3 p-20 mB-20">
-    <h4 class="c-grey-900 mB-20">show all Photos</h4>
+   
    
     <table class="table table-bordered">
         <thead>
@@ -12,6 +31,7 @@
                 <th scope="col">Id</th>
                 <th scope="col">Photo</th>
                 <th scope="col">Name</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -25,20 +45,33 @@
                   <img src="/img/{{$photo->name}}" alt="" style="width: 300px;">
                 </td>
                 <td>{{$photo->name}}</td>
-                {{-- <td>
-                @if($photo->status=='published')
+                 <td>
+                @if($photo->featured)
                         <div class="btn cur-p btn-success" style="width: 100px;text-transform:capitalize;font-size:.8rem;">
-                        {{$photo->status}}
+                        Featured Image
                     </div>
                     
                 
                 @else
                      
                     <div class="btn cur-p btn-warning" style="width: 100px;text-transform:capitalize;font-size:.8rem;">
-                       {{$photo->status}}
+                       Not Featured
                     </div>
                     </td>
-                @endif --}}
+                @endif
+                <td>
+    <a href="{{route('admin.listings.photos.featured',['slug' =>$slug,'id'=>$id,'photo_id'=>$photo->id])}}" onclick="return confirm('Are Your sure?')"
+    class="btn cur-p btn-outline-success" style="width: 100%;margin-top:1rem;color:black;">
+   
+        Make Featured
+    </a>
+                   <a href="{{route('admin.listings.photos.delete',['slug' =>$slug,'id'=>$id,'photo_id'=>$photo->id])}}" onclick="return confirm('Are you sure ? want to delete ?')"
+                      class="btn btn-danger btn-color" style="width: 100%;margin-top:1rem;">
+                   Delete
+                </a>
+                   
+                </td>
+               
                
              
                 
